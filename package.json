@@ -1,0 +1,32 @@
+{
+    "name": "ws_sos",
+    "version": "1.0.0",
+    "description": "Web server hecho en node js para la sos",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js",
+        "dev": "nodemon build/index.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.0.0",
+        "express": "^4.17.1",
+        "handlebars": "^4.1.2",
+        "jsonwebtoken": "^8.5.1",
+        "morgan": "^1.9.1",
+        "mysql2": "^1.6.5",
+        "node-datetime": "^2.1.2",
+        "node-mysql": "^0.4.2",
+        "nodemailer": "^6.3.0",
+        "nodemailer-smtp-transport": "^2.7.4",
+        "sequelize": "^5.14.0"
+    },
+    "devDependencies": {
+        "eslint": "^6.2.0",
+        "eslint-config-google": "^0.13.0",
+        "nodemon": "^1.19.1"
+    }
+}
