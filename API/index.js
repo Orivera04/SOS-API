@@ -5,13 +5,10 @@ require('dotenv').config();
 const Express = require('express');
 const Logger = require('morgan');
 const BodyParser = require('body-parser');
-const StageBundle = require('./config.json');
-const StageConfig = StageBundle.development;
 const APP = Express();
 const Router = Express.Router();
-const InventarioRoutes = require('./routes/inventario.Routes.js');
+const ApiRoutes = require('./routes/api.Routes.js');
 var MysqlDB = require('mysql');
-var Log = require('./log.js');
 var Cors=require('cors');
 
 
@@ -49,11 +46,11 @@ APP.use(Logger('dev'));
 
 /* Definiendo las rutas */
 APP.use('/api/v1', Router);
-InventarioRoutes(Router);
+ApiRoutes(Router);
 
 /* Configurando Listener de la APP */
 APP.listen(process.env.PORT || 3000, () => {
-    console.log(`-> El servidor esta arriba en el puerto :${StageConfig.node_port}`);
+    console.log(`-> La api se esta ejecutando.`);
 });
 
 module.exports = APP;
