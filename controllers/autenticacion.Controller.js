@@ -21,7 +21,7 @@ exports.VerificarUsuario = async(Request, Response) => {
 exports.RestablecerCredenciales = async(Request, Response) => {
     await loginDal.VerificarUsuario(Request.BD, Request.body.Usuario, Request.body.Email)
         .then(async function(Usuario) {
-                if (Usuario[0].CONTRASEÑA != null) {
+                if (Usuario.length > 0 && Usuario[0].CONTRASEÑA != null) {
 
                             var HtmlFile = function(Ruta, Callback) {
                                 FS.readFile(Ruta, { encoding: 'utf-8' }, function(Err, HTML) {

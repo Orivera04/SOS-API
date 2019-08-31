@@ -28,18 +28,6 @@ module.exports = {
         });
     }), 
 
-    /* Resteblece la contraseña */
-    RecuperarContraseña: (async function(BD, Usuario,Password) {
-        return new Promise(function(OK, Error) {            
-            BD.query("UPDATE USUARIO SET CONTRASEÑA = ? WHERE ID_USUARIO = ?;", [Password,Usuario],
-                function(Err, Fila,) {
-                    if (Err) {
-                        Error(Err);
-                    } else {
-                        OK(Fila);
-                    }
-                });
-        });
-    }), 
+    
 
 };
