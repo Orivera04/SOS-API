@@ -1,5 +1,5 @@
 /* Se carga la capa de acceso a datos de esta entidad */
-const usuarioDal = require('../../models/usuario.Dal.js');
+const usuarioDal = require('../models/usuario.Dal.js');
 
 exports.ObtenerUsuario = async(Request, Response) => {
     await usuarioDal.GetByID(Request.BD, Request.params.id)

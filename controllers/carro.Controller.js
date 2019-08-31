@@ -1,5 +1,5 @@
 /* Se carga la capa de acceso a datos de esta entidad */
-const carroDal = require('../../models/carro.Dal.js');
+const carroDal = require('../models/carro.Dal.js');
 
 exports.ObtenerCarro = async(Request, Response) => {
     await carroDal.GetByID(Request.BD, Request.params.id)

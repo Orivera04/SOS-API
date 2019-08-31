@@ -1,5 +1,5 @@
 /* Se carga la capa de acceso a datos de esta entidad */
-const averiaDal = require('../../models/averia.Dal.js');
+const averiaDal = require('../models/Averia.Dal.js');
 
 exports.ObtenerListaAverias = async(Request, Response) => {
     await averiaDal.GetAll(Request.BD, Request.params.id)
