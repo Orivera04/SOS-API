@@ -7,7 +7,7 @@ exports.ObtenerListaAverias = async(Request, Response) => {
                 Response.status(200).send(Averia);
             },
             function(Error) {                
-                Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'ocurrio un error al ejecutar la solicitud.',Excepcion: Error });
+                Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'scurrio un error al ejecutar la solicitud.',Excepcion: Error });
             });
 };
 
