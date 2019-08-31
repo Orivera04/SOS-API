@@ -70,7 +70,7 @@ exports.RestablecerCredenciales = async(Request, Response) => {
                             });
                         }                    
                  else {
-                    Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'No existe ningun usuario que tenga ese correo electronico asociado o que tenga ese usuario.' });
+                    Response.status(200).send({ Codigo: -4, Estado: 'Error', Mensaje: 'No existe ningun usuario que tenga ese correo electronico asociado o que tenga ese usuario.' });
                 }
             },
             function(Excepcion) {
