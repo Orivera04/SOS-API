@@ -22,8 +22,6 @@ exports.RestablecerCredenciales = async(Request, Response) => {
     await loginDal.VerificarUsuario(Request.BD, Request.body.Usuario, Request.body.Email)
         .then(async function(Usuario) {
                 if (Usuario[0].CONTRASEÑA != null) {
-                    await loginDal.RecuperarContraseña(Request.BD,Request.body.Usuario,Request.body.Password)
-                        .then(function() {
 
                             var HtmlFile = function(Ruta, Callback) {
                                 FS.readFile(Ruta, { encoding: 'utf-8' }, function(Err, HTML) {
@@ -70,8 +68,8 @@ exports.RestablecerCredenciales = async(Request, Response) => {
                                     }
                                 });
                             });
-                        });                    
-                } else {
+                        }                    
+                 else {
                     Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'No existe ningun usuario que tenga ese correo electronico asociado o que tenga ese usuario.' });
                 }
             },
