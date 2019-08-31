@@ -17,7 +17,7 @@ module.exports = {
     /* Verifica si la contraseña existe */
     VerificarUsuario: (async function(BD, Usuario,Email) {
         return new Promise(function(OK, Error) {            
-            BD.query("SELECT CONTRASEÑA FROM USUARIO WHERE U.USUARIO = ? AND U.EMAIL_USUARIO = ?;", [Usuario,Email],
+            BD.query("SELECT CONTRASEÑA FROM USUARIO U WHERE U.USUARIO = ? AND U.EMAIL_USUARIO = ?;", [Usuario,Email],
                 function(Err, Fila,) {
                     if (Err) {
                         Error(Err);
