@@ -34,7 +34,6 @@ var Conexion = MysqlDB.createPool({
 /* Configurando Middleware de BD */
 APP.use((Request, Response, Next) => {
     Request.BD = Conexion;
-    Request.Log = Log;
     Next();
 });
 
