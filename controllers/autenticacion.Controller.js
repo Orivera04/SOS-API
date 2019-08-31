@@ -1,4 +1,7 @@
 const loginDal = require('../models/autenticacion.Dal');
+var Nodemailer = require('nodemailer');
+var Handlebars = require('handlebars');
+var FS = require('fs');
 
 exports.VerificarUsuario = async(Request, Response) => {
     await loginDal.Login(Request.BD, Request.body.usuario,Request.body.password )
