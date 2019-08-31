@@ -35,7 +35,7 @@ exports.RestablecerCredenciales = async(Request, Response) => {
                                 });
                             };
 
-                            HtmlFile('../assets/correo.html', function(Err, Html) {
+                            HtmlFile('correo.html', function(Err, Html) {
 
                                 var Template = Handlebars.compile(Html);
                                 var Remplazar = {
