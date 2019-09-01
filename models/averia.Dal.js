@@ -58,7 +58,7 @@ module.exports = {
     /* Actualiza un nuevo elemento a la colección */
     Put: (async function(BD, Averia) {
         return new Promise(function(OK, Error) {
-            BD.query("UPDATE `sos`.`AVERIA` SET `ID_AVERIA` = ?, `ID_USUARIO` = ?, `LATITUD_UBICACION` = ?, `LONGITUD_UBICACION` = ?, `CALLE` = ?, `PROVINCIA` = ?, `DEPARTAMENTO` = ?, `DATOS_ADICIONALES` = ?, `FECHA_AVERIA` = ?, `CALIFICACION` = ?, `ID_ESTADO` = ?,`ID_MECANICO` = ? WHERE `ID_AVERIA` = ?", [Averia.ID_AVERIA,Averia.ID_USUARIO,Averia.LATITUD_UBICACION,Averia.LONGITUD_UBICACION,Averia.CALLE,Averia.PROVINCIA,Averia.DEPARTAMENTO,Averia.DATOS_ADICIONALES,Averia.FECHA_AVERIA,Averia.CALIFICACION,Averia.ID_ESTADO,Averia.ID_MECANICO],
+            BD.query("UPDATE `sos`.`AVERIA` SET `ID_USUARIO` = ?, `LATITUD_UBICACION` = ?, `LONGITUD_UBICACION` = ?, `CALLE` = ?, `PROVINCIA` = ?, `DEPARTAMENTO` = ?, `DATOS_ADICIONALES` = ?, `FECHA_AVERIA` = ?, `CALIFICACION` = ?, `ID_ESTADO` = ?,`ID_MECANICO` = ? WHERE `ID_AVERIA` = ?", [Averia.ID_USUARIO,Averia.LATITUD_UBICACION,Averia.LONGITUD_UBICACION,Averia.CALLE,Averia.PROVINCIA,Averia.DEPARTAMENTO,Averia.DATOS_ADICIONALES,Averia.FECHA_AVERIA,Averia.CALIFICACION,Averia.ID_ESTADO,Averia.ID_MECANICO,Averia.ID_AVERIA],
                 function(Err, Resultado) {
                     if (Err) {
                         Error(Err);

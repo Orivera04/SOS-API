@@ -15,7 +15,7 @@ exports.ObtenerUsuario = async(Request, Response) => {
 exports.InsertarUsuario = async(Request, Response) => {
     await usuarioDal.Post(Request.BD, Request.body)
         .then(function(Usuario) {
-                Response.status(200).send(Usuario);
+                Response.status(200).send({Codigo: 5, Estado : "Exito"});
             },
             function(Error) {                
                 Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'Ocurrio un error al ejecutar la solicitud.',Excepcion: Error });
@@ -24,8 +24,8 @@ exports.InsertarUsuario = async(Request, Response) => {
 
 exports.ActualizarUsuario = async(Request, Response) => {
     await usuarioDal.Put(Request.BD, Request.body)
-        .then(function(Usuario) {
-                Response.status(200).send(Usuario);
+        .then(function(Usuario) {        
+                Response.status(200).send({Codigo: 5, Estado : "Exito"});
             },
             function(Error) {                
                 Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'Ocurrio un error al ejecutar la solicitud.',Excepcion: Error });
@@ -36,7 +36,7 @@ exports.ActualizarUsuario = async(Request, Response) => {
 exports.EliminarUsuario = async(Request, Response) => {
     await usuarioDal.Delete(Request.BD, Request.params.id)
         .then(function(Usuario) {
-                Response.status(200).send(Usuario);
+                Response.status(200).send({Codigo: 5, Estado : "Exito"});
             },
             function(Error) {                
                 Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'Ocurrio un error al ejecutar la solicitud.',Excepcion: Error });
