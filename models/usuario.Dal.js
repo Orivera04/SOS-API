@@ -32,7 +32,7 @@ module.exports = {
     /* Actualiza un nuevo elemento a la colección */
     Put: (async function(BD, Usuario) {
         return new Promise(function(OK, Error) {
-            BD.query("UPDATE `sos`.`USUARIO` SET `CONTRASEÑA` = ?, `ID_TIPO` = ?, `NOMBRE_USUARIO` = ?, `APELLIDO_USUARIO` = ?, `TELEFONO_USUARIO` = ?, `EMAIL_USUARIO` = ?, `DIRECCION` = ?, `CIUDAD` = ?, `PAIS` = ?, `CEDULA` = ?, WHERE `ID_USUARIO` = ?", [Usuario.CONTRASEÑA,Usuario.ID_TIPO,Usuario.NOMBRE_USUARIO,Usuario.APELLIDO_USUARIO,Usuario.TELEFONO_USUARIO,Usuario.EMAIL_USUARIO,Usuario.DIRECCION,Usuario.CIUDAD,Usuario.PAIS,Usuario.CEDULA,Usuario.ID_USUARIO],
+            BD.query("UPDATE `sos`.`USUARIO` SET `CONTRASEÑA` = ?, `ID_TIPO` = ?, `NOMBRE_USUARIO` = ?, `APELLIDO_USUARIO` = ?, `TELEFONO_USUARIO` = ?, `EMAIL_USUARIO` = ?, `DIRECCION` = ?, `CIUDAD` = ?, `PAIS` = ?, `CEDULA` = ?, WHERE `USUARIO` = ?", [Usuario.CONTRASEÑA,Usuario.ID_TIPO,Usuario.NOMBRE_USUARIO,Usuario.APELLIDO_USUARIO,Usuario.TELEFONO_USUARIO,Usuario.EMAIL_USUARIO,Usuario.DIRECCION,Usuario.CIUDAD,Usuario.PAIS,Usuario.CEDULA,Usuario.USUARIO],
                 function(Err, Resultado) {
                     if (Err) {
                         Error(Err);
