@@ -32,5 +32,5 @@ module.exports = function(Router) {
     Router.delete('/Usuario', usuarioController.EliminarUsuario);
 
     /* Rutas para el controlador contacto */
-    Router.delete('/Contacto', contactoController.InsertarMensaje);
+    Router.post('/Contacto', contactoController.InsertarMensaje);
 };
