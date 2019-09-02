@@ -44,7 +44,7 @@ module.exports = {
     /* Añade un nuevo elemento a la colección */
     Post: (async function(BD, Averia) {
         return new Promise(function(OK, Error) {
-            BD.query("INSERT INTO `sos`.`AVERIA` (`ID_USUARIO`,`LATITUD_UBICACION`,`LONGITUD_UBICACION`,`CALLE`,`PROVINCIA`,`DEPARTAMENTO`,`DATOS_ADICIONALES`,`FECHA_AVERIA`,`CALIFICACION`,`ID_ESTADO`) VALUES (?,?,?,?,?,?,?,NOW(),?,?);", [Averia.ID_USUARIO,Averia.LATITUD_UBICACION,Averia.LONGITUD_UBICACION,Averia.CALLE,Averia.PROVINCIA,Averia.DEPARTAMENTO,Averia.DATOS_ADICIONALES,Averia.FECHA_AVERIA,Averia.CALIFICACION,1],
+            BD.query("INSERT INTO `sos`.`AVERIA` (`ID_USUARIO`,`LATITUD_UBICACION`,`LONGITUD_UBICACION`,`CALLE`,`PROVINCIA`,`DEPARTAMENTO`,`DATOS_ADICIONALES`,`FECHA_AVERIA`,`CALIFICACION`,`ID_ESTADO`) VALUES (?,?,?,?,?,?,?,NOW(),?,?);", [Averia.ID_USUARIO,Averia.LATITUD_UBICACION,Averia.LONGITUD_UBICACION,Averia.CALLE,Averia.PROVINCIA,Averia.DEPARTAMENTO,Averia.DATOS_ADICIONALES,Averia.CALIFICACION,1],
                 function(Err, Resultado) {
                     if (Err) {
                         Error(Err);
