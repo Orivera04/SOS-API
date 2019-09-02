@@ -6,7 +6,7 @@ module.exports = {
 
             // Todas las las averias de un usuario 
             if(Tipo_Filtro == 1){
-                BD.query("SELECT A.*,U.NOMBRE_USUARIO,U.APELLIDO_USUARIO,EA.DESCRIPCION_ESTADO  FROM AVERIA A,USUARIO U,ESTADO_AVERIA EA WHERE A.ID_USUARIO = U.USUARIO AND EA.ID_ESTADO = A.ID_ESTADO AND A.ID_USUARIO = ?", [USUARIO],
+                BD.query("SELECT A.*,U.NOMBRE_USUARIO,U.APELLIDO_USUARIO,EA.DESCRIPCION_ESTADO,A.ID_TIPO  FROM AVERIA A,USUARIO U,ESTADO_AVERIA EA WHERE A.ID_USUARIO = U.USUARIO AND EA.ID_ESTADO = A.ID_ESTADO AND A.ID_USUARIO = ?", [USUARIO],
                     function(Err, Filas) {
                         if (Err) {
                             Error(Err);
