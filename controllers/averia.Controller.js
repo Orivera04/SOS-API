@@ -2,7 +2,7 @@
 const averiaDal = require('../models/averia.Dal.js');
 
 exports.ObtenerListaAverias = async(Request, Response) => {
-    await averiaDal.GetAll(Request.BD, Request.body.TIPO_FILTRO,Request.body.USUARIO)
+    await averiaDal.GetAll(Request.BD, Request.params.id,Request.params.usuario)
         .then(function(Averia) {
                 Response.status(200).send(Averia);
             },

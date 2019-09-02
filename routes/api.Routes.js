@@ -12,7 +12,7 @@ module.exports = function(Router) {
     Router.put('/Autenticacion', autenticacionController.RestablecerCredenciales);
     
     /* Rutas para el controlador Averia */
-    Router.get('/Averia/', averiaController.ObtenerListaAverias);
+    Router.get('/Averia/:id/:usuario', averiaController.ObtenerListaAverias);
     Router.get('/Averia/:id', averiaController.ObtenerAveria);
     Router.post('/Averia', averiaController.InsertarAveria);
     Router.put('/Averia', averiaController.ActualizarAveria);
