@@ -23,7 +23,7 @@ module.exports = function(Router) {
     Router.get('/Carro/:id', carroController.ObtenerCarro);
     Router.post('/Carro', carroController.InsertarCarro);
     Router.put('/Carro', carroController.ActualizarCarro);
-    Router.delete('/Carro', carroController.EliminarCarro);
+    Router.delete('/Carro/:id', carroController.EliminarCarro);
 
     /* Rutas para el controlador Usuario */
     Router.get('/Usuario/:id', usuarioController.ObtenerUsuario);
