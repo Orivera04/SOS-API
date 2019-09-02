@@ -3,6 +3,7 @@ const autenticacionController = require('../controllers/autenticacion.Controller
 const averiaController = require('../controllers/averia.Controller');
 const carroController = require('../controllers/carro.Controller');
 const usuarioController = require('../controllers/usuario.Controller');
+const contactoController = require('../controllers/contacto.Controller');
 
 module.exports = function(Router) {
 
@@ -29,4 +30,7 @@ module.exports = function(Router) {
     Router.post('/Usuario', usuarioController.InsertarUsuario);
     Router.put('/Usuario', usuarioController.ActualizarUsuario);
     Router.delete('/Usuario', usuarioController.EliminarUsuario);
+
+    /* Rutas para el controlador contacto */
+    Router.delete('/Contacto', contactoController.InsertarMensaje);
 };
