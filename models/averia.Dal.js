@@ -33,7 +33,7 @@ module.exports = {
     /* Obtiene un elemento de la colección */
     GetByID: (async function(BD, ID) {
         return new Promise(function(OK, Error) {
-            BD.query("SELECT A.*,U.NOMBRE_USUARIO,U.APELLIDO_USUARIO,U.TELEFONO_USUARIO FROM AVERIA A, USUARIO U WHERE A.ID_AVERIA = ? AND U.ID_USUARIO = A.ID_USUARIO", [ID],
+            BD.query("SELECT A.*,U.NOMBRE_USUARIO,U.APELLIDO_USUARIO,U.TELEFONO_USUARIO FROM AVERIA A, USUARIO U WHERE A.ID_AVERIA = ? AND U.USUARIO = A.ID_USUARIO", [ID],
                 function(Err, Filas) {
                     if (Err) {
                         Error(Err);
