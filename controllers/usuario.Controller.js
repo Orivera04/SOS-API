@@ -42,4 +42,3 @@ exports.EliminarUsuario = async(Request, Response) => {
                 Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'Ocurrio un error al ejecutar la solicitud.',Excepcion: Error });
             });
 };
-
