@@ -5,7 +5,7 @@ module.exports = {
         return new Promise(function(OK, Error) {
 
             // Todas las las averias de un usuario 
-            if(Tipo_Filtro == 1){
+            if(Tipo_Filtro == "1"){
                     BD.query("SELECT A.*, DATE_FORMAT(A.FECHA_AVERIA,'%d/%m/%y') AS FORMATEADA,TE.NOMBRE_ESPECIALIDAD,EA.DESCRIPCION_ESTADO FROM AVERIA A,USUARIO U,ESTADO_AVERIA EA, TIPO_ESPECIALIDAD TE  WHERE A.ID_USUARIO = U.USUARIO AND EA.ID_ESTADO = A.ID_ESTADO AND A.ID_USUARIO = ? AND TE.ID_ESPECIALIDAD = A.ID_TIPO ORDER BY ID_AVERIA DESC;", [USUARIO],
                     function(Err, Filas) {
                         if (Err) {
@@ -15,9 +15,21 @@ module.exports = {
                         }
                     });
             }
-            // Todas las averias sin atender o en progreso
-            else if(Tipo_Filtro == 2){    
-                BD.query("SELECT A.*,U.NOMBRE_USUARIO,U.APELLIDO_USUARIO,EA.DESCRIPCION_ESTADO FROM AVERIA A,USUARIO U,ESTADO_AVERIA EA WHERE A.ID_USUARIO = U.USUARIO AND EA.ID_ESTADO = A.ID_ESTADO AND A.ID_ESTADO IN (1,2);", [],
+            // Todas las averias de un mecanico 
+            else if(Tipo_Filtro == "2")
+            {
+                BD.query("SELECT A.*, DATE_FORMAT(A.FECHA_AVERIA,'%d/%m/%y') AS FORMATEADA,TE.NOMBRE_ESPECIALIDAD,EA.DESCRIPCION_ESTADO FROM AVERIA A,USUARIO U,ESTADO_AVERIA EA, TIPO_ESPECIALIDAD TE  WHERE A.ID_USUARIO = U.USUARIO AND EA.ID_ESTADO = A.ID_ESTADO AND A.ID_MECANICO = ? AND TE.ID_ESPECIALIDAD = A.ID_TIPO ORDER BY ID_AVERIA DESC;", [USUARIO],
+                function(Err, Filas) {
+                    if (Err) {
+                        Error(Err);
+                    } else {
+                        OK(Filas);
+                    }
+                });
+            }
+            // Todas las averias sin atender
+            else if(Tipo_Filtro == "2"){    
+                BD.query("SELECT A.*,U.NOMBRE_USUARIO,U.APELLIDO_USUARIO,EA.DESCRIPCION_ESTADO FROM AVERIA A,USUARIO U,ESTADO_AVERIA EA WHERE A.ID_USUARIO = U.USUARIO AND EA.ID_ESTADO = A.ID_ESTADO AND A.ID_ESTADO IN (1);", [],
                     function(Err, Filas) {
                         if (Err) {
                             Error(Err);
