@@ -84,10 +84,9 @@ module.exports = {
         });
     }),
 
-    /* Elimina un elemento de la colección */
-    Delete: (async function(BD, ID) {
+    Delete: (async function(BD, Averia) {
         return new Promise(function(OK, Error) {
-            BD.query("DELETE FROM `sos`.`AVERIA` WHERE ID_AVERIA = ?", [ID],
+            BD.query("UPDATE `sos`.`AVERIA` SET `CALIFICACION` = ? WHERE `ID_AVERIA` = ?;",[Averia.CALIFICACION,Averia.ID_AVERIA],
                 function(Err, Resultado) {
                     if (Err) {
                         Error(Err);
@@ -96,7 +95,7 @@ module.exports = {
                     }
                 });
         });
-    })
+    }),
 
 };
 

@@ -43,7 +43,7 @@ exports.ActualizarAveria = async(Request, Response) => {
 
 
 exports.EliminarAveria = async(Request, Response) => {
-    await averiaDal.Delete(Request.BD, Request.params.id)
+    await averiaDal.Delete(Request.BD, Request.body)
         .then(function(Averia) {
                 Response.status(200).send({Codigo: 5, Estado : "Exito"});
             },
