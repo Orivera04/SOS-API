@@ -7,10 +7,10 @@ exports.VerificarUsuario = async(Request, Response) => {
     await loginDal.Login(Request.BD, Request.body.usuario,Request.body.password )
         .then(function(Login) {
             if (Login[0].ID_TIPO == null) {                         
-                Response.status(200).send({Codigo: 5, Estado: 'Exito', Existe: false, Tipo_Usuario: []});
+                Response.status(200).send({Codigo: 5, Estado: 'Exito', Existe: false, Tipo_Usuario: [],ID_USUARIO : ""});
             } 
             else {
-                Response.status(200).send({Codigo: 5, Estado: 'Exito', Existe: true,Tipo_Usuario :Login[0].ID_TIPO});                                    
+                Response.status(200).send({Codigo: 5, Estado: 'Exito', Existe: true,Tipo_Usuario :Login[0].ID_TIPO,ID_USUARIO : Login[0].ID_USUARIO});                                    
             }
         },
         function(Excepcion) {                
