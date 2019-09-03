@@ -3,7 +3,7 @@ module.exports = {
     /* Verifica si el usuario existe */
     Login: (async function(BD, Usuario,Password) {
         return new Promise(function(OK, Error) {            
-            BD.query("SELECT COUNT(*),TU.NOMBRE_TIPO,TU.ID_TIPO FROM USUARIO U,TIPO_USUARIO TU WHERE U.USUARIO = ? AND U.CONTRASEÑA = ? AND TU.ID_TIPO = U.ID_TIPO;", [Usuario,Password],
+            BD.query("SELECT COUNT(*),TU.NOMBRE_TIPO,TU.ID_TIPO,U.ID_USUARIO FROM USUARIO U,TIPO_USUARIO TU WHERE U.USUARIO = ? AND U.CONTRASEÑA = ? AND TU.ID_TIPO = U.ID_TIPO;", [Usuario,Password],
                 function(Err, Fila,) {
                     if (Err) {
                         Error(Err);
