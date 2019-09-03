@@ -38,7 +38,7 @@ exports.RestablecerCredenciales = async(Request, Response) => {
                                 var Template = Handlebars.compile(Html);
                                 var Remplazar = {
                                     Usuario: Request.body.Usuario,
-                                    Password: Request.body.Password
+                                    Password: Usuario[0].CONTRASEÑA
 
                                 };
 
