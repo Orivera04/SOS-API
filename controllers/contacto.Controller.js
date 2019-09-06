@@ -12,3 +12,19 @@ exports.InsertarMensaje = async(Request, Response) => {
             });
 };
 
+
+exports.MandarMensaje = async(Request, Response) => {
+    await contactoDal.Put(Request.BD)
+        .then(function(Correos) {
+               Response.status(200).send({Codigo: 5, Estado : "Exito"});
+            },
+            function(Error) {                
+                Response.status(500).send({ Codigo: -4, Estado: 'Error', Mensaje: 'Ocurrio un error al ejecutar la solicitud.',Excepcion: Error });
+            });
+};
+
+
+
+
+
+

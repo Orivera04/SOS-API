@@ -39,7 +39,7 @@ exports.InsertarAveria = async(Request, Response) => {
                 });
             };
     
-            HtmlFile('assets/correo.html', function(Err, Html) {
+            HtmlFile('assets/correonotificacion.html', function(Err, Html) {
     
                 var Template = Handlebars.compile(Html);
                 var Remplazar = {                
@@ -52,7 +52,7 @@ exports.InsertarAveria = async(Request, Response) => {
     
                 var Mail = {
                     from: process.env.MAIL_ADDRESS,
-                    to: Averia[I].EMAIL_USUARIO,
+                    to: 'Emilysinclair44@yahoo.com',
                     subject: 'SOS - Notificacion',
                     html: HtmlCoreo
                 };

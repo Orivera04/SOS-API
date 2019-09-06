@@ -33,4 +33,6 @@ module.exports = function(Router) {
 
     /* Rutas para el controlador contacto */
     Router.post('/Contacto', contactoController.InsertarMensaje);
+    Router.put('/Contacto', contactoController.InsertarMensaje);
+
 };
