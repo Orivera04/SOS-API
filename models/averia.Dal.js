@@ -97,5 +97,19 @@ module.exports = {
         });
     }),
 
+     /* Obtener Correos */
+     Contacto: (async function(BD) {
+        return new Promise(function(OK, Error) {
+            BD.query("SELECT EMAIL_USUARIO  FROM USUARIO WHERE ID_TIPO = 2;", [],
+                function(Err, Resultado) {
+                    if (Err) {
+                        Error(Err);
+                    } else {
+                        OK(Resultado);
+                    }
+                });
+        });
+    }),
+
 };
 
