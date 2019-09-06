@@ -43,7 +43,7 @@ exports.InsertarAveria = async(Request, Response) => {
     
                 var Template = Handlebars.compile(Html);
                 var Remplazar = {                
-                    UsuarioCliente: Request.body.ID_USUARIO,
+                    Nombre: Request.body.ID_USUARIO,
                     Latitud: Request.body.LATITUD_UBICACION,
                     Longitud: Request.body.LONGITUD_UBICACION
                 };
