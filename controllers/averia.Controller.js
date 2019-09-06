@@ -28,59 +28,53 @@ exports.ObtenerAveria = async(Request, Response) => {
 exports.InsertarAveria = async(Request, Response) => {
     await averiaDal.Post(Request.BD, Request.body)
         .then(function(Averia) {
-        await averiaDal.Contacto(Request.BD)
-            .then(function(Correo) {
-                for(I = 0 ; I<Averia.length;I++)
-                {
-                        var HtmlFile = function(Ruta, Callback) {
-                            FS.readFile(Ruta, { encoding: 'utf-8' }, function(Err, HTML) {
-                                if (Err) {
-                                    throw Err;
-                                } else {
-                                    Callback(null, HTML);
-                                }
-                            });
-                        };
+            
+            var HtmlFile = function(Ruta, Callback) {
+                FS.readFile(Ruta, { encoding: 'utf-8' }, function(Err, HTML) {
+                    if (Err) {
+                        throw Err;
+                    } else {
+                        Callback(null, HTML);
+                    }
+                });
+            };
+    
+            HtmlFile('assets/correo.html', function(Err, Html) {
+    
+                var Template = Handlebars.compile(Html);
+                var Remplazar = {                
+                    UsuarioCliente: Request.body.ID_USUARIO,
+                    Latitud: Request.body.LATITUD_UBICACION,
+                    Longitud: Request.body.LONGITUD_UBICACION
+                };
+    
+                var HtmlCoreo = Template(Remplazar);
+    
+                var Mail = {
+                    from: process.env.MAIL_ADDRESS,
+                    to: Averia[I].EMAIL_USUARIO,
+                    subject: 'SOS - Notificacion',
+                    html: HtmlCoreo
+                };
                 
-                        HtmlFile('assets/correo.html', function(Err, Html) {
-                
-                            var Template = Handlebars.compile(Html);
-                            var Remplazar = {                
-                                UsuarioCliente: Request.body.ID_USUARIO,
-                                Latitud: Request.body.LATITUD_UBICACION,
-                                Longitud: Request.body.LONGITUD_UBICACION
-                            };
-                
-                            var HtmlCoreo = Template(Remplazar);
-                
-                            var Mail = {
-                                from: process.env.MAIL_ADDRESS,
-                                to: Correo[I].EMAIL_USUARIO,
-                                subject: 'SOS - Notificacion',
-                                html: HtmlCoreo
-                            };
-                            
-                            var SMTPTransport = require('nodemailer-smtp-transport');
-                            SMTPTransport = Nodemailer.createTransport(SMTPTransport({
-                                service: 'gmail',
-                                auth: {
-                                    user: process.env.MAIL_ADDRESS,
-                                    pass: process.env.MAIL_PASSWORD
-                                }
-                            }));
-                
-                            SMTPTransport.sendMail(Mail, function(Erro, Respon) {
-                                if (Erro) {                                        
-                                    Response.status(401).send({ Codigo: -10, Estado: 'false', Mensaje: 'Ocurrio un error al enviar el correo electronico a la cuenta dada.',Excepcion:Erro});
-                                } else {
-                                    Response.status(200).send({Codigo: 5, Estado : "Exito"});
-                                }
-                            });
-                        });
-                }                                                    
-        });
-
-           
+                var SMTPTransport = require('nodemailer-smtp-transport');
+                SMTPTransport = Nodemailer.createTransport(SMTPTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: process.env.MAIL_ADDRESS,
+                        pass: process.env.MAIL_PASSWORD
+                    }
+                }));
+    
+                SMTPTransport.sendMail(Mail, function(Erro, Respon) {
+                    if (Erro) {                                        
+                        Response.status(401).send({ Codigo: -10, Estado: 'false', Mensaje: 'Ocurrio un error al enviar el correo electronico a la cuenta dada.',Excepcion:Erro});
+                    } else {
+                        Response.status(200).send({Codigo: 5, Estado : "Exito"});
+                    }
+                });
+            });
+    
     });
 };    
 
