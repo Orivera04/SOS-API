@@ -22,7 +22,7 @@
         "node-mysql": "^0.4.2",
         "nodemailer": "^6.3.0",
         "nodemailer-smtp-transport": "^2.7.4",
-        "sequelize": "^5.14.0"
+        "sequelize": "^5.15.1"
     },
     "devDependencies": {
         "eslint": "^6.2.0",
