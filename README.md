@@ -1,2 +1,2 @@
-# Back_END_SOS
-Parte de servidor SOS
+# API SOS APP
+Api ultilizada en el backend de la App de Android Rescate SOS.
